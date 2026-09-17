@@ -3,12 +3,12 @@
     x:Class="BagrutProject_2027.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BagrutProject_2027"
+    xmlns:local="clr-namespace:BagrutProject_2027.Views"
     Title="BagrutProject_2027">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate local:GameLibrary}"
         Route="MainPage" />
 
 </Shell>
