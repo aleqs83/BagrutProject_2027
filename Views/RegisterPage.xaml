@@ -3,10 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BagrutProject_2027.Views.RegisterPage"
              Title="RegisterPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="10">
+            <Label Text="Register" FontSize="28" />
+
+            <Entry x:Name="NameEntry" Placeholder="Username" />
+            <Entry x:Name="EmailEntry" Placeholder="Email" />
+            <Entry x:Name="PNameEntry" Placeholder="First name" />
+            <Entry x:Name="FNameEntry" Placeholder="Last name" />
+            <Label Text="Birth date" />
+            <DatePicker x:Name="BirthDatePicker" />
+            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+            <Entry x:Name="ConfirmEntry" Placeholder="Confirm password" IsPassword="True" />
+
+            <Label x:Name="MessageLabel" />
+
+            <Button Text="Register" Clicked="OnRegisterClicked" />
+            <Button Text="Back to Login" Clicked="OnBackClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
