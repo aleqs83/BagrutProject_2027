@@ -1,4 +1,4 @@
-﻿namespace BagrutProject_2027
+﻿   namespace BagrutProject_2027
 {
     public partial class AppShell : Shell
     {
