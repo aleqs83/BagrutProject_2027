@@ -52,6 +52,10 @@ public partial class LoginPage : ContentPage
             await Shell.Current.GoToAsync("//MainPage");
         }
     }
+    private void btnShowPassword3(object sender, EventArgs e)//it shows the password by making isPassword go from true to false for password entery
+    {
+        PasswordEntry.IsPassword = !PasswordEntry.IsPassword;
+    }
 
     private async void OnRegisterClicked(object? sender, EventArgs e)
     {

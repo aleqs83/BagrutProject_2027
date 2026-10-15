@@ -90,6 +90,15 @@ public partial class RegisterPage : ContentPage
         await Shell.Current.GoToAsync("//LoginPage");
     }
 
+    private void btnShowPassword1(object sender, EventArgs e)//it shows the password by making isPassword go from true to false for password entery
+    {
+        PasswordEntry.IsPassword = !PasswordEntry.IsPassword;
+    }
+    private void btnShowPassword2(object sender, EventArgs e)//it shows the password by making isPassword go from true to false for password confirm entery
+    {
+        ConfirmEntry.IsPassword = !ConfirmEntry.IsPassword;
+    }
+
     private async void OnBackClicked(object? sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//LoginPage");

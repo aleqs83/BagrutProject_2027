@@ -2,17 +2,54 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BagrutProject_2027.Views.LoginPage"
+             BackgroundColor="#0D0D0D"
              Title="LoginPage">
-    <VerticalStackLayout Padding="24" Spacing="10">
-        <Label Text="Login" FontSize="28" />
 
-        <Entry x:Name="EmailEntry" Placeholder="Email" />
-        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+    <ContentPage.Resources>
+        <!--i added styles that go with my project-->
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="#1A1A1A" />
+            <Setter Property="TextColor" Value="#39FF14" />
+            <Setter Property="PlaceholderColor" Value="#557755" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
 
-        <!-- one label for all messages (errors and success) -->
-        <Label x:Name="MessageLabel" />
+        <Style x:Key="MainButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#39FF14" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
 
-        <Button Text="Login" Clicked="OnLoginClicked" />
-        <Button Text="Go to Register" Clicked="OnRegisterClicked" />
+        <Style x:Key="LinkButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="#39FF14" />
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout VerticalOptions="Center" Padding="30" Spacing="14"
+                     MaximumWidthRequest="420">
+
+        <Label Text="Welcome Back" FontSize="34" FontAttributes="Bold"
+           TextColor="White" HorizontalOptions="Center" />
+        <Label Text="Login to your account" FontSize="16"
+           TextColor="#557755" HorizontalOptions="Center" Margin="0,0,0,20" />
+
+        <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" />
+
+        <Grid ColumnDefinitions="*,auto">
+            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+            <Button Clicked="btnShowPassword3" Grid.Column="1" />
+        </Grid>
+
+
+        <Label x:Name="MessageLabel" HorizontalOptions="Center" />
+
+        <Button Text="Login" Style="{StaticResource MainButton}"
+            Clicked="OnLoginClicked" />
+        <Button Text="Don't have an account? Register"
+            Style="{StaticResource LinkButton}"
+            Clicked="OnRegisterClicked" />
     </VerticalStackLayout>
 </ContentPage>

@@ -2,24 +2,64 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BagrutProject_2027.Views.RegisterPage"
+             BackgroundColor="#0D0D0D"
              Title="RegisterPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="#1A1A1A" />
+            <Setter Property="TextColor" Value="#39FF14" />
+            <Setter Property="PlaceholderColor" Value="#557755" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
+
+        <Style x:Key="MainButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#39FF14" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
+
+        <Style x:Key="LinkButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="#39FF14" />
+        </Style>
+    </ContentPage.Resources>
+
     <ScrollView>
-        <VerticalStackLayout Padding="24" Spacing="10">
-            <Label Text="Register" FontSize="28" />
+        <VerticalStackLayout Padding="30" Spacing="12" MaximumWidthRequest="420">
+
+            <Label Text="Create Account" FontSize="34" FontAttributes="Bold"
+                TextColor="White" HorizontalOptions="Center" Margin="0,20,0,10" />
 
             <Entry x:Name="NameEntry" Placeholder="Username" />
-            <Entry x:Name="EmailEntry" Placeholder="Email" />
+            <Entry x:Name="EmailEntry" Placeholder="Email (name@gmail.com)" Keyboard="Email" />
             <Entry x:Name="PNameEntry" Placeholder="First name" />
             <Entry x:Name="FNameEntry" Placeholder="Last name" />
-            <Label Text="Birth date" />
-            <DatePicker x:Name="BirthDatePicker" />
-            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
-            <Entry x:Name="ConfirmEntry" Placeholder="Confirm password" IsPassword="True" />
 
-            <Label x:Name="MessageLabel" />
+            <Label Text="Birth date" TextColor="#557755" />
+            <DatePicker x:Name="BirthDatePicker" Format="dd/MM/yyyy"
+                     TextColor="#39FF14" BackgroundColor="#1A1A1A" />
 
-            <Button Text="Register" Clicked="OnRegisterClicked" />
-            <Button Text="Back to Login" Clicked="OnBackClicked" />
+            <Grid ColumnDefinitions="*,auto">
+                <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+                <Button Clicked="btnShowPassword1" Grid.Column="1" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,auto">
+                <Entry x:Name="ConfirmEntry" Placeholder="Confirm password" IsPassword="True" />
+                <Button Clicked="btnShowPassword2" Grid.Column="1" />
+            </Grid>
+
+            <Label x:Name="MessageLabel" HorizontalOptions="Center" />
+
+            <Button Text="Register" Style="{StaticResource MainButton}"
+                 Clicked="OnRegisterClicked" />
+
+            <Button Text="Already have an account? Login"
+                 Style="{StaticResource LinkButton}"
+                 Clicked="OnBackClicked" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
