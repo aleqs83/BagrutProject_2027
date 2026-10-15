@@ -46,7 +46,7 @@
            TextColor="#557755" HorizontalOptions="Center" Margin="0,0,0,20" />
 
         <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-            <Label Grid.Column="0" FontFamily="Material" FontSize="26"
+            <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
            Text="{x:Static helper:IconFonts.Email}"
            TextColor="#39FF14" VerticalOptions="Center" />
             <Entry Grid.Column="1" x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" />
@@ -57,7 +57,7 @@
             <Button Clicked="btnShowPassword3" Grid.Column="1" />
         </Grid>-->
         <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-            <Label Grid.Column="0" FontFamily="Material" FontSize="26"
+            <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
            Text="{x:Static helper:IconFonts.Lock}"
            TextColor="#39FF14" VerticalOptions="Center" />
             <Entry Grid.Column="1" x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
