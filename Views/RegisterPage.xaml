@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helper="clr-namespace:BagrutProject_2027.Helper"
              x:Class="BagrutProject_2027.Views.RegisterPage"
              BackgroundColor="#0D0D0D"
              Title="RegisterPage">
@@ -11,6 +12,7 @@
             <Setter Property="TextColor" Value="#39FF14" />
             <Setter Property="PlaceholderColor" Value="#557755" />
             <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="FontFamily" Value="BlackOpsOne" />
         </Style>
 
         <Style x:Key="MainButton" TargetType="Button">
@@ -19,11 +21,17 @@
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="CornerRadius" Value="4" />
             <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="FontFamily" Value="BlackOpsOne" />
         </Style>
 
         <Style x:Key="LinkButton" TargetType="Button">
             <Setter Property="BackgroundColor" Value="Transparent" />
             <Setter Property="TextColor" Value="#39FF14" />
+            <Setter Property="FontFamily" Value="BlackOpsOne" />
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="BlackOpsOne" />
         </Style>
     </ContentPage.Resources>
 

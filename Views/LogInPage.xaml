@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helper="clr-namespace:BagrutProject_2027.Helper"
              x:Class="BagrutProject_2027.Views.LoginPage"
              BackgroundColor="#0D0D0D"
              Title="LoginPage">
@@ -12,6 +13,7 @@
             <Setter Property="TextColor" Value="#39FF14" />
             <Setter Property="PlaceholderColor" Value="#557755" />
             <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="FontFamily" Value="BlackOpsOne" />
         </Style>
 
         <Style x:Key="MainButton" TargetType="Button">
@@ -20,11 +22,17 @@
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="CornerRadius" Value="4" />
             <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="FontFamily" Value="BlackOpsOne" />
         </Style>
 
         <Style x:Key="LinkButton" TargetType="Button">
             <Setter Property="BackgroundColor" Value="Transparent" />
             <Setter Property="TextColor" Value="#39FF14" />
+            <Setter Property="FontFamily" Value="BlackOpsOne" />
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="BlackOpsOne" />
         </Style>
     </ContentPage.Resources>
 
@@ -33,14 +41,26 @@
 
         <Label Text="Welcome Back" FontSize="34" FontAttributes="Bold"
            TextColor="White" HorizontalOptions="Center" />
+        
         <Label Text="Login to your account" FontSize="16"
            TextColor="#557755" HorizontalOptions="Center" Margin="0,0,0,20" />
 
-        <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" />
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+            <Label Grid.Column="0" FontFamily="Material" FontSize="26"
+           Text="{x:Static helper:IconFonts.Email}"
+           TextColor="#39FF14" VerticalOptions="Center" />
+            <Entry Grid.Column="1" x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" />
+        </Grid>
 
-        <Grid ColumnDefinitions="*,auto">
+        <!--<Grid ColumnDefinitions="*,auto">
             <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
             <Button Clicked="btnShowPassword3" Grid.Column="1" />
+        </Grid>-->
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+            <Label Grid.Column="0" FontFamily="Material" FontSize="26"
+           Text="{x:Static helper:IconFonts.Lock}"
+           TextColor="#39FF14" VerticalOptions="Center" />
+            <Entry Grid.Column="1" x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
         </Grid>
 
 
