@@ -29,7 +29,7 @@
             <Setter Property="TextColor" Value="#39FF14" />
             <Setter Property="FontFamily" Value="BlackOpsOne" />
         </Style>
-        
+
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="BlackOpsOne" />
         </Style>
@@ -41,8 +41,21 @@
             <Label Text="Create Account" FontSize="34" FontAttributes="Bold"
                 TextColor="White" HorizontalOptions="Center" Margin="0,20,0,10" />
 
-            <Entry x:Name="NameEntry" Placeholder="Username" />
-            <Entry x:Name="EmailEntry" Placeholder="Email (name@gmail.com)" Keyboard="Email" />
+            
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10"><!--username entery field with icons-->
+                <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
+                       Text="{x:Static helper:IconFonts.Person_add_alt}"
+                       TextColor="#39FF14" VerticalOptions="Center" />
+                <Entry Grid.Column="1" x:Name="NameEntry" Placeholder="Username"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10"><!--EMAIL entery field with icons-->
+                <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
+                       Text="{x:Static helper:IconFonts.Email}"
+                       TextColor="#39FF14" VerticalOptions="Center" />
+                <Entry Grid.Column="1" x:Name="EmailEntry" Placeholder="Email (name@gmail.com)" Keyboard="Email" />
+            </Grid>
+            
             <Entry x:Name="PNameEntry" Placeholder="First name" />
             <Entry x:Name="FNameEntry" Placeholder="Last name" />
 
@@ -50,14 +63,21 @@
             <DatePicker x:Name="BirthDatePicker" Format="dd/MM/yyyy"
                      TextColor="#39FF14" BackgroundColor="#1A1A1A" />
 
-            <Grid ColumnDefinitions="*,auto">
-                <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
-                <Button Clicked="btnShowPassword1" Grid.Column="1" />
+            <Grid ColumnDefinitions="auto,*,auto" ColumnSpacing="10"> <!--password entery field with icons-->
+                <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
+                       Text="{x:Static helper:IconFonts.Lock}"
+                       TextColor="#39FF14" VerticalOptions="Center" />
+                <Entry Grid.Column="1" x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+                <Button Clicked="btnShowPassword1" Grid.Column="2" />
             </Grid>
 
-            <Grid ColumnDefinitions="*,auto">
-                <Entry x:Name="ConfirmEntry" Placeholder="Confirm password" IsPassword="True" />
-                <Button Clicked="btnShowPassword2" Grid.Column="1" />
+            <Grid ColumnDefinitions="auto,*,auto" ColumnSpacing="10"><!--password entery field with icons-->
+                <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
+                       Text="{x:Static helper:IconFonts.Lock}"
+                       TextColor="#39FF14" VerticalOptions="Center" />
+                
+                <Entry Grid.Column="1" x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+                <Button Clicked="btnShowPassword2" Grid.Column="2" />
             </Grid>
 
             <Label x:Name="MessageLabel" HorizontalOptions="Center" />
