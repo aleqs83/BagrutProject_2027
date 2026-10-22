@@ -67,7 +67,7 @@
                 <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
                        Text="{x:Static helper:IconFonts.Lock}"
                        TextColor="#39FF14" VerticalOptions="Center" />
-                <Entry Grid.Column="1" x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+                <Entry Grid.Column="1" x:Name="PasswordEntry1" Placeholder="Password" IsPassword="True" />
                 <Button Clicked="btnShowPassword1" Grid.Column="2" />
             </Grid>
 
@@ -75,8 +75,8 @@
                 <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
                        Text="{x:Static helper:IconFonts.Lock}"
                        TextColor="#39FF14" VerticalOptions="Center" />
-                
-                <Entry Grid.Column="1" x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+
+                <Entry Grid.Column="1" x:Name="ConfirmEntry" Placeholder="Password" IsPassword="True" />
                 <Button Clicked="btnShowPassword2" Grid.Column="2" />
             </Grid>
 

@@ -24,7 +24,7 @@ public partial class RegisterPage : ContentPage
         string email = EmailEntry.Text ?? "";
         string pname = PNameEntry.Text ?? "";
         string fname = FNameEntry.Text ?? "";
-        string password = PasswordEntry.Text ?? "";
+        string password = PasswordEntry1?.Text ?? "";
         string confirm = ConfirmEntry.Text ?? "";
         DateTime birth = Convert.ToDateTime(BirthDatePicker.Date);// get the date from the date picker
 
@@ -80,7 +80,7 @@ public partial class RegisterPage : ContentPage
         EmailEntry.Text = "";
         PNameEntry.Text = "";
         FNameEntry.Text = "";
-        PasswordEntry.Text = "";
+        PasswordEntry1.Text ="";
         ConfirmEntry.Text = "";
         MessageLabel.Text = "";
 
@@ -92,7 +92,7 @@ public partial class RegisterPage : ContentPage
 
     private void btnShowPassword1(object sender, EventArgs e)//it shows the password by making isPassword go from true to false for password entery
     {
-        PasswordEntry.IsPassword = !PasswordEntry.IsPassword;
+        PasswordEntry1.IsPassword = !PasswordEntry1.IsPassword;
     }
     private void btnShowPassword2(object sender, EventArgs e)//it shows the password by making isPassword go from true to false for password confirm entery
     {

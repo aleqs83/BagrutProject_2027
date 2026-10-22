@@ -2,8 +2,93 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BagrutProject_2027.Views.GameLibrary"
-             Title="GameLibrary">
-    <HorizontalStackLayout>
-        <VerticalStackLayout x:Name="results" ></VerticalStackLayout>
-    </HorizontalStackLayout>
+             Title="GameLibrary"
+             BackgroundColor="#F5F7FB">
+    <CollectionView
+        ItemsSource="{Binding}"
+        Margin="16"
+        SelectionMode="None">
+
+        <!-- Two cards per row -->
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout
+                Orientation="Vertical"
+                Span="2"
+                HorizontalItemSpacing="12"
+                VerticalItemSpacing="12" />
+        </CollectionView.ItemsLayout>
+
+        <!-- Defines the appearance of one game card -->
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+
+                <Border
+                    Padding="12"
+                    BackgroundColor="White"
+                    Stroke="#D9E0EA"
+                    StrokeThickness="1">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="8">
+
+                        <!-- Cover image -->
+                        <Image
+                            Source="{Binding CoverImageURL}"
+                            HeightRequest="130"
+                            HorizontalOptions="Fill"
+                            Aspect="AspectFit" />
+
+                        <!-- Title -->
+                        <Label
+                            Text="{Binding Title}"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            TextColor="#172033"
+                            LineBreakMode="WordWrap" />
+
+                        <!-- Genre -->
+                        <Label
+                            Text="{Binding genre,
+                                StringFormat='Genre: {0}'}"
+                            FontSize="12"
+                            TextColor="#526071" />
+
+                        <!-- Release date -->
+                        <Label
+                            Text="{Binding releaseDate,
+                                StringFormat='Released: {0}'}"
+                            FontSize="12"
+                            TextColor="#526071" />
+
+                        <!-- Platform icons -->
+                        <HorizontalStackLayout
+                            BindableLayout.ItemsSource="{Binding GameConsoles}"
+                            Spacing="8"
+                            HorizontalOptions="Start">
+
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Image
+                                        Source="{Binding GameConsoleIcon}"
+                                        WidthRequest="28"
+                                        HeightRequest="28"
+                                        Aspect="AspectFit"
+                                        VerticalOptions="Center" />
+
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
 </ContentPage>
