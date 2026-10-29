@@ -46,49 +46,85 @@
                 <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
                        Text="{x:Static helper:IconFonts.Person_add_alt}"
                        TextColor="#39FF14" VerticalOptions="Center" />
-                <Entry Grid.Column="1" x:Name="NameEntry" Placeholder="Username"/>
+
+                <Entry Grid.Column="1"
+                    Placeholder="Username"
+                    Text="{Binding Name, Mode=TwoWay}"/>
             </Grid>
 
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10"><!--EMAIL entery field with icons-->
                 <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
                        Text="{x:Static helper:IconFonts.Email}"
                        TextColor="#39FF14" VerticalOptions="Center" />
-                <Entry Grid.Column="1" x:Name="EmailEntry" Placeholder="Email (name@gmail.com)" Keyboard="Email" />
-            </Grid>
-            
-            <Entry x:Name="PNameEntry" Placeholder="First name" />
-            <Entry x:Name="FNameEntry" Placeholder="Last name" />
 
-            <Label Text="Birth date" TextColor="#557755" />
-            <DatePicker x:Name="BirthDatePicker" Format="dd/MM/yyyy"
-                     TextColor="#39FF14" BackgroundColor="#1A1A1A" />
+                <Entry Grid.Column="1"
+                    Placeholder="Email (name@gmail.com)"
+                    Keyboard="Email"
+                    Text="{Binding Email, Mode=TwoWay}" />
+            </Grid>
+
+            <Entry Placeholder="First name"
+                Text="{Binding FirstName, Mode=TwoWay}" />
+            <Entry Placeholder="Last name"
+                Text="{Binding LastName, Mode=TwoWay}" />
+
+            <Label 
+                Text="Birth date" 
+                TextColor="#557755" />
+
+            <DatePicker Format="dd/MM/yyyy"
+                Date="{Binding BirthDate, Mode=TwoWay}"
+                TextColor="#39FF14"
+                BackgroundColor="#1A1A1A" />
 
             <Grid ColumnDefinitions="auto,*,auto" ColumnSpacing="10"> <!--password entery field with icons-->
                 <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
                        Text="{x:Static helper:IconFonts.Lock}"
                        TextColor="#39FF14" VerticalOptions="Center" />
-                <Entry Grid.Column="1" x:Name="PasswordEntry1" Placeholder="Password" IsPassword="True" />
 
-                <Button BackgroundColor="#1A1A1A" FontFamily="MaterialIcons" FontSize="26" Text="{x:Static helper:IconFonts.Visibility}" TextColor="#39FF14" VerticalOptions="Center" Clicked="btnShowPassword1" Grid.Column="2" />
+                <Entry Grid.Column="1"
+                    Placeholder="Password"
+                    IsPassword="{Binding IsPasswordHidden}"
+                    Text="{Binding Password, Mode=TwoWay}" />
+
+                <Button Grid.Column="2"
+                    Text="{Binding PasswordToggleText}"
+                    Command="{Binding TogglePasswordCommand}"
+                    TextColor="#39FF14"
+                    BackgroundColor="Transparent"
+                    Padding="6,0"  />
             </Grid>
 
-            <Grid ColumnDefinitions="auto,*,auto" ColumnSpacing="10"><!--password entery field with icons-->
+            <Grid ColumnDefinitions="auto,*,auto" ColumnSpacing="10"><!--password confirm entery field with icons-->
                 <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
                        Text="{x:Static helper:IconFonts.Lock}"
                        TextColor="#39FF14" VerticalOptions="Center" />
 
-                <Entry Grid.Column="1" x:Name="ConfirmEntry" Placeholder="Password" IsPassword="True" />
-                <Button BackgroundColor="#1A1A1A" FontFamily="MaterialIcons" FontSize="26" Text="{x:Static helper:IconFonts.Visibility}" TextColor="#39FF14" VerticalOptions="Center" Clicked="btnShowPassword2" Grid.Column="2" />
+                <Entry Grid.Column="1"
+                    Placeholder="Confirm password"
+                    IsPassword="{Binding IsConfirmPasswordHidden}"
+                    Text="{Binding ConfirmPassword, Mode=TwoWay}"/>
+                
+                <Button Grid.Column="2"
+                    Text="{Binding ConfirmPasswordToggleText}"
+                    Command="{Binding ToggleConfirmPasswordCommand}"
+                    TextColor="#39FF14"
+                    BackgroundColor="Transparent"
+                    Padding="6,0" />
             </Grid>
 
-            <Label x:Name="MessageLabel" HorizontalOptions="Center" />
+            <Label Text="{Binding Message}"
+                TextColor="{Binding MessageColor}"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center" />
 
-            <Button Text="Register" Style="{StaticResource MainButton}"
-                 Clicked="OnRegisterClicked" />
+            <Button Text="Register"
+                Style="{StaticResource MainButton}"
+                Command="{Binding RegisterCommand}" />
 
             <Button Text="Already have an account? Login"
-                 Style="{StaticResource LinkButton}"
-                 Clicked="OnBackClicked" />
+                Style="{StaticResource LinkButton}"
+                Command="{Binding GoToLoginCommand}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

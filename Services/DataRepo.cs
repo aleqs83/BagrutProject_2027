@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace BagrutProject_2027.Services
 {
     internal static class DataRepo// this class is used to store the users and their corresponding information
     {
+        #region A list of users with their corresponding information
         public static List<User> Users = new List<User>()
         {
             new User { UserId = 1, Name = "admin", Email = "admin@gmail.com",
@@ -33,18 +35,22 @@ namespace BagrutProject_2027.Services
                        Password = "123456", PName = "Yair", FName = "guata",
                        BirthDate = new DateTime(2009 , 10, 4) }
         };
-
+        #region Old commented-out code
         // returns the user if email+password match, otherwise null
-        public static User? Login(string email, string password)// checks if the email and password match a user in the list
-        {
-            foreach (User u in Users)
-            {
-                if (u.Email == email && u.Password == password)
-                    return u;
-            }
-            return null;
-        }
+        //public static User? Login(string email, string password)// checks if the email and password match a user in the list
+        //{
+        //    foreach (User u in Users)
+        //    {
+        //        if (u.Email == email && u.Password == password)
+        //            return u;
+        //    }
+        //    return null;
+        //}
+        #endregion
 
+        #endregion
+
+        #region A list of games with their corresponding information
         public static ObservableCollection<Game> Games { get; }
            = CreateGames();// this list is used to store the games and their corresponding information
 
@@ -172,23 +178,60 @@ namespace BagrutProject_2027.Services
                 }
             };
         }
+        #endregion
 
+        #region new way of checking if the email is already registered
+        // Search all sample user lists and newly registered users.
+        private static IEnumerable<User> AllUsers =>
+            Users.Concat(Users1)
+                 .Concat(Users2)
+                 .Concat(Users3);
 
-        // true if this email is already registered
-        public static bool EmailExists(string email)// checks if the email is already registered
+        public static User? Login( string email, string password)
         {
-            foreach (User u in Users)
-            {
-                if (u.Email == email)
-                    return true;
-            }
-            return false;
+            return AllUsers.FirstOrDefault(user =>string.Equals
+            ( user.Email,email,StringComparison.OrdinalIgnoreCase) 
+            && user.Password == password);
         }
 
-        public static void Add(User user)// adds a new user to the list of users
+        public static bool EmailExists(string email)
         {
-            user.UserId = Users.Count + 1;
+            return AllUsers.Any(user =>
+                string.Equals(
+                    user.Email,
+                    email,
+                    StringComparison.OrdinalIgnoreCase));
+        }
+
+        public static void Add(User user)
+        {
+            user.UserId = AllUsers
+                .Select(existingUser => existingUser.UserId)
+                .DefaultIfEmpty(0)
+                .Max() + 1;
+
+            // Newly registered users are added to Users.
             Users.Add(user);
         }
+        #endregion
+
+        #region Old commented-out code 
+        // true if this email is already registered
+        //public static bool EmailExists(string email)// checks if the email is already registered
+        //{
+        //    foreach (User u in Users)
+        //    {
+        //        if (u.Email == email)
+        //            return true;
+        //    }
+        //    return false;
+        //}
+
+        //public static void Add(User user)// adds a new user to the list of users
+        //{
+        //    user.UserId = Users.Count + 1;
+        //    Users.Add(user);
+        //}
+        #endregion
     }
 }

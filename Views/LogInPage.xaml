@@ -77,10 +77,10 @@
            TextColor="#39FF14" VerticalOptions="Center" />
             
             <Entry 
-                Grid.Column="1" 
-                x:Name="PasswordEntry" 
-                Placeholder="Password" 
-                IsPassword="True" />
+                Grid.Column="1"
+                Placeholder="Password"
+                IsPassword="{Binding IsPasswordHidden}"
+                Text="{Binding Password, Mode=TwoWay}" />
 
             <!--BackgroundColor="#1A1A1A",Text="{x:Static helper:IconFonts.Visibility},FontFamily="MaterialIcons" FontSize="26" "-->
             <Button Grid.Column="2"

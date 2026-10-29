@@ -9,10 +9,7 @@ namespace BagrutProject_2027.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected bool SetProperty<T>(
-            ref T backingField,
-            T value,
-            [CallerMemberName] string? propertyName = null)
+        protected bool SetProperty<T>(ref T backingField, T value, [CallerMemberName] string? propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(
                 backingField, value))
