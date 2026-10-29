@@ -36,20 +36,39 @@
         </Style>
     </ContentPage.Resources>
 
-    <VerticalStackLayout VerticalOptions="Center" Padding="30" Spacing="14"
-                     MaximumWidthRequest="420">
+    <VerticalStackLayout 
+        VerticalOptions="Center" 
+        Padding="30" 
+        Spacing="14"      
+        MaximumWidthRequest="420">
 
-        <Label Text="Welcome Back" FontSize="34" FontAttributes="Bold"
-           TextColor="White" HorizontalOptions="Center" />
+        <Label 
+            Text="Welcome Back" 
+            FontSize="34" 
+            FontAttributes="Bold"
+           TextColor="White" 
+            HorizontalOptions="Center" />
         
-        <Label Text="Login to your account" FontSize="16"
-           TextColor="#557755" HorizontalOptions="Center" Margin="0,0,0,20" />
+        <Label 
+            Text="Login to your account" 
+            FontSize="16"
+           TextColor="#557755" 
+            HorizontalOptions="Center" 
+            Margin="0,0,0,20" />
 
+        <!-- Email -->
         <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-            <Label Grid.Column="0" FontFamily="MaterialIcons" FontSize="26"
-           Text="{x:Static helper:IconFonts.Email}"
-           TextColor="#39FF14" VerticalOptions="Center" />
-            <Entry Grid.Column="1" x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" />
+            <Label 
+                Grid.Column="0" 
+                FontFamily="MaterialIcons" 
+                FontSize="26"
+                Text="{x:Static helper:IconFonts.Email}"
+                TextColor="#39FF14" VerticalOptions="Center" />
+
+            <Entry Grid.Column="1"
+                Placeholder="Email"
+                Keyboard="Email"
+                Text="{Binding Email, Mode=TwoWay}" />
         </Grid>
         
         <Grid ColumnDefinitions="auto,*,auto" ColumnSpacing="10">
@@ -57,17 +76,39 @@
            Text="{x:Static helper:IconFonts.Lock}"
            TextColor="#39FF14" VerticalOptions="Center" />
             
-            <Entry Grid.Column="1" x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
-            <Button Clicked="btnShowPassword3" Grid.Column="2" />
+            <Entry 
+                Grid.Column="1" 
+                x:Name="PasswordEntry" 
+                Placeholder="Password" 
+                IsPassword="True" />
+
+            <!--BackgroundColor="#1A1A1A",Text="{x:Static helper:IconFonts.Visibility},FontFamily="MaterialIcons" FontSize="26" "-->
+            <Button Grid.Column="2"
+                Text="{Binding PasswordToggleText}"
+                Command="{Binding TogglePasswordCommand}"
+                TextColor="#39FF14"
+                BackgroundColor="Transparent"
+                Padding="6,0" />
         </Grid>
 
+        <!-- Error and success messages -->
+        <Label
+            Text="{Binding Message}"
+            TextColor="{Binding MessageColor}"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center" />
 
-        <Label x:Name="MessageLabel" HorizontalOptions="Center" />
+        <!-- Login -->
+        <Button
+            Text="Login"
+            Style="{StaticResource MainButton}"
+            Command="{Binding LoginCommand}" />
 
-        <Button Text="Login" Style="{StaticResource MainButton}"
-            Clicked="OnLoginClicked" />
-        <Button Text="Don't have an account? Register"
+        <!-- Navigate to registration -->
+        <Button
+            Text="Don't have an account? Register"
             Style="{StaticResource LinkButton}"
-            Clicked="OnRegisterClicked" />
+            Command="{Binding GoToRegisterCommand}" />
+        
     </VerticalStackLayout>
 </ContentPage>
